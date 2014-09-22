@@ -15,3 +15,34 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+Route::get('hola', function() {
+	return "<h1>Hola mundo</h1>";
+});
+
+Route::get('nombre/{nombre?}', function($nombre=null){
+	if($nombre != null){
+		return "Su nombre es ".$nombre;
+	}
+	else{
+		return "No tiene nombre :P";
+	}
+});
+
+Route::get('user/{name?}', function($name=null){
+	return $name;
+
+})->where('name','[A-Za-z]+');
+
+Route::get('agregar-usuario', function(){
+	echo Form::open(array('url'=>'agregar','method'=>'post'));
+	echo Form::label('nombre','Nombre: ');
+	echo Form::text('nom');
+	echo Form::submit('Enviar');
+	echo Form::close();
+});
+
+Route::post('agregar', function(){
+	$nombre = Input::get('nom');
+	return 'Tu nombre es '.$nombre;
+});
