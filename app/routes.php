@@ -11,16 +11,30 @@
 |
 */
 
-Route::get('/', function()
+/*Route::get('/', function()
 {
 	return View::make('hello');
+});*/
+
+/*Route::get('/', array('before'=>'cumpleanios',function(){
+	return View::make('hello');
+}));*/
+
+Route::get('/','EjemploController@mostrarIndex');
+Route::get('mensaje','EjemploController@mostrarMensaje');
+Route::get('nombre/{nombre?}','EjemploController@mostrarNombre');
+
+Route::controller('usuarios', 'UsuariosController');
+
+Route::get('mivista1', function(){
+	return View::make('vista1');
 });
 
-Route::get('hola', function() {
-	return "<h1>Hola mundo</h1>";
+Route::get('hola', function(){
+	return View::make('hola');
 });
 
-Route::get('nombre/{nombre?}', function($nombre=null){
+/*Route::get('nombre/{nombre?}', function($nombre=null){
 	if($nombre != null){
 		return "Su nombre es ".$nombre;
 	}
@@ -45,4 +59,4 @@ Route::get('agregar-usuario', function(){
 Route::post('agregar', function(){
 	$nombre = Input::get('nom');
 	return 'Tu nombre es '.$nombre;
-});
+});*/

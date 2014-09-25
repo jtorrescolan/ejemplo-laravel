@@ -88,3 +88,9 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+Route::filter('cumpleanios', function(){
+	if(date('d/m') == '22/09'){
+		return "Feliz cumpleaños";
+	}
+});
